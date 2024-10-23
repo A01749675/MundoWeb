@@ -3,11 +3,11 @@ from bs4 import BeautifulSoup
 URL = "https://fmf.mx/noticias"
 page = requests.get(URL)
 
-def scrape_fmf_news() -> dict:
+def scrape_fmf_news():
     soup = BeautifulSoup(page.content, "html.parser")
 
     news_blocks = soup.find_all("div", class_="noticia_block")
-    result = {}
+    result = []
 
     for block in news_blocks:
         title_element = block.find("h2", attrs={"_ngcontent-sc53": True})
@@ -22,11 +22,11 @@ def scrape_fmf_news() -> dict:
         link_element = block.find("a", href=True)
         link = "https://fmf.mx" + link_element['href'] if link_element else "Enlace no encontrado"
 
-        result[title] = {
+        result.append( {
             "title": title,
             "description": description,
             "date": date,
             "link": link
-        }
+        })
 
     return result

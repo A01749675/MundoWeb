@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1> {% block title %}Página Principal{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <h3>Robotics</h3>
+  {% for post in posts %}
+    <article class = "post"></article>
+      <header>
+        <div>
+          <h1>{{post['event']}}</h1>
+        </div>
+      </header>
+      <p class = "event">{{ post ['event'] }}</p>
+      <p class = "body">{{ post['direction'] }}</p>
+      <a class = "link" href = "{{ post['url']}}">Link</a>
+  {% endfor %}
+{% endblock %}

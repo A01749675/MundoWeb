@@ -2,8 +2,10 @@
 
 {% block header %}
 <h1> {% block title %}Página Principal{% endblock %}</h1>
+{% endblock %}
 
 {% block content %}
+  <h3>Robotics</h3>
   {% for post in dba %}
     <article class = "post"></article>
       <header>
@@ -12,27 +14,23 @@
         </div>
       </header>
       <p class = "event">{{ post ['event'] }}</p>
-      <p class = "body">{{ post['url'] }}</p>
-      <a class = "link" href = "{{ post['direction']}}">Link</a>
+      <p class = "body">{{ post['direction'] }}</p>
+      <a class = "link" href = "{{ post['url']}}">Link</a>
   {% endfor %}
-{% endblock %}
-
-{% block content %}
+  <h3>Sports</h3>
   {% for post in fmf %}
-    <article class = "post"></article>
-      <header>
-        <div>
-          <h1>{{post['title']}}</h1>
-        </div>
-      </header>
-      <p class = "date">{{ post ['date'] }}</p>
-      <p class = "body">{{ post['description'] }}</p>
-      <a class = "link" href = "{{ post['link']}}">Link</a>
-  {% endfor %}
-{% endblock %}
-
-{% block content %}
-  {% for post in gundam %}
+  <article class = "post"></article>
+    <header>
+      <div>
+        <h1>{{post['title']}}</h1>
+      </div>
+    </header>
+    <p class = "date">{{ post ['date'] }}</p>
+    <p class = "body">{{ post['description'] }}</p>
+    <a class = "link" href = "{{ post['link']}}">Link</a>
+{% endfor %}
+<h3>Anime</h3>
+{% for post in gundam %}
     <article class = "post"></article>
       <header>
         <div>

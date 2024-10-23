@@ -13,7 +13,11 @@ bp = Blueprint('data', __name__)
 
 #@bp.route('/index', methods=('GET', 'POST'))
 def initialize_data():
-    dba, fmf, gundam = GetAllContent()
+    all = GetAllContent()
+    dba,fmf,gundam = all['blue_alliance'], all['fmf_news'], all['gundam']
+    print(dba)
+    print(fmf)
+    print(gundam)
     db = get_db()
     db.execute(
         '''
@@ -30,7 +34,9 @@ def initialize_data():
         DELETE FROM gundam;
         '''
     )
+    print(dba)
     for item in dba:
+        print(item)
         db.execute(
             '''
             INSERT INTO regional (event, url, direction)
@@ -77,7 +83,8 @@ def index():
     ).fetchall()
     return render_template('main/index.html', dba = dba, fmf = fmf, gundam = gundam)
 
-@bp.route('/dba', methods=('GET'))
+@bp.route('/dba', methods=('GET',))
+@login_required
 def dba():
     db = get_db()
     dba = db.execute(
@@ -86,7 +93,8 @@ def dba():
         '''
     ).fetchall()
     return render_template('main/dba.html', posts = dba)
-@bp.route('/fmf', methods=('GET'))
+@bp.route('/fmf', methods=('GET',))
+@login_required
 def fmf():
     db = get_db()
     fmf = db.execute(
@@ -96,7 +104,8 @@ def fmf():
     ).fetchall()
     return render_template('main/fmf.html', posts = fmf)
 
-@bp.route('/gundam', methods=('GET'))
+@bp.route('/gundam', methods=('GET',))
+@login_required
 def gundam():
     db = get_db()
     gundam = db.execute(
@@ -105,3 +114,12 @@ def gundam():
         '''
     ).fetchall()
     return render_template('main/gundam.html', posts = gundam)
+
+@bp.route('/<int:id>/delete', methods=('POST',))
+@login_required
+def delete(id):
+    get_post(id)
+    db = get_db()
+    db.execute('DELETE FROM post WHERE id = ?', (id,))
+    db.commit()
+    return redirect(url_for('blog.index'))

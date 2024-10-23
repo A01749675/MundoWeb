@@ -5,7 +5,7 @@ URL = "https://www.thebluealliance.com/"
 page = requests.get(URL)
 
 
-def getRegionalData()->dict:
+def getRegionalData():
     soup = BeautifulSoup(page.content, "html.parser")
     results = soup.find("table")
     events = results.find_all("tr")
