@@ -15,9 +15,7 @@ bp = Blueprint('data', __name__)
 def initialize_data():
     all = GetAllContent()
     dba,fmf,gundam = all['blue_alliance'], all['fmf_news'], all['gundam']
-    print(dba)
-    print(fmf)
-    print(gundam)
+
     db = get_db()
     db.execute(
         '''
@@ -34,9 +32,7 @@ def initialize_data():
         DELETE FROM gundam;
         '''
     )
-    print(dba)
     for item in dba:
-        print(item)
         db.execute(
             '''
             INSERT INTO regional (event, url, direction)
@@ -66,24 +62,75 @@ def initialize_data():
 def index():
     initialize_data()
     db = get_db()
-    dba = db.execute(
-        '''
-        SELECT * FROM regional;
-        '''
-    ).fetchall()
-    fmf = db.execute(
-        '''
-        SELECT * FROM fmf_news;
-        '''
-    ).fetchall()
-    gundam = db.execute(
-        '''
-        SELECT * FROM gundam;
-        '''
-    ).fetchall()
+    titles =[
+        "",
+        "",
+        ""
+        
+    ]
 
+    if(g.user):
+        print("User exists")
+        if(g.user['regional']):
+            
+            dba = db.execute(
+                '''
+                SELECT * FROM regional;
+                '''
+            )
+            titles[0] = "Regional"
+        else:
+            dba = []
+            titles[0] = ""
+        if(g.user['fmf']):
+            
+            fmf = db.execute(
+                '''
+                SELECT * FROM fmf_news;
+                '''
+            ).fetchall()
+            titles[1] = "Sports"
+        else:
+            fmf = []
+            titles[1] = ""
+        if(g.user['gundam']):
+            print("GUNDAAAAAAAAAAAAAAAAAAAM")
+            print(g.user['gundam']) 
+            gundam = db.execute(
+                '''
+                SELECT * FROM gundam;
+                '''
+            ).fetchall()
+           
+            titles[2] = "Anime"
+        else:
+            titles[2] = ""
+            gundam = []
+            
+            
+        print("AAAAAAAAAAa")
+        print(titles)
+    else:
+        print("No user")
+        titles= ["Regional","Sports","Anime"]
+        dba = db.execute(
+            '''
+            SELECT * FROM regional;
+            '''
+        ).fetchall()
+        fmf = db.execute(
+            '''
+            SELECT * FROM fmf_news;
+            '''
+        ).fetchall()
+        gundam = db.execute(
+            '''
+            SELECT * FROM gundam;
+            '''
+        ).fetchall()
+        print(titles)
 
-    return render_template('main/index.html', dba = dba, fmf = fmf, gundam = gundam)
+    return render_template('main/index.html', dba = dba, fmf = fmf, gundam = gundam,titles = titles)
 
 @bp.route('/dba', methods=('GET',))
 @login_required

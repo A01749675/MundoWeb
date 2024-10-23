@@ -33,10 +33,16 @@ def register():
 
         if not gundam:
             gundam = False
+        else:
+            gundam = True
         if not regional:
             regional = False
+        else:
+            regional = True
         if not fmf:
             fmf = False
+        else:
+            fmf = True
 
         if error is None:
             try:
