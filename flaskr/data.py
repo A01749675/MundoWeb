@@ -76,3 +76,31 @@ def index():
     ).fetchall()
     return render_template('main/index.html', dba = dba, fmf = fmf, gundam = gundam)
 
+@bp.route('/dba', methods=('GET'))
+def dba():
+    db = get_db()
+    dba = db.execute(
+        '''
+        SELECT * FROM regional;
+        '''
+    ).fetchall()
+    return render_template('main/dba.html', posts = dba)
+@bp.route('/fmf', methods=('GET'))
+def fmf():
+    db = get_db()
+    fmf = db.execute(
+        '''
+        SELECT * FROM fmf_news;
+        '''
+    ).fetchall()
+    return render_template('main/fmf.html', posts = fmf)
+
+@bp.route('/gundam', methods=('GET'))
+def gundam():
+    db = get_db()
+    gundam = db.execute(
+        '''
+        SELECT * FROM gundam;
+        '''
+    ).fetchall()
+    return render_template('main/gundam.html', posts = gundam)
