@@ -23,7 +23,7 @@ def init_db():
 
 @click.command('init-db')
 def init_db_command():
-    init.db()
+    init_db()
     click.echo('Initialized the database')
 
 @click.command('scrape')
