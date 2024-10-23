@@ -5,14 +5,15 @@ from werkzeug.exceptions import abort
 
 from flaskr.auth import login_required
 from flaskr.db import get_db
-
-from web_scrapers.data_getter import get_data
-
-bp = Blueprint('blog', __name__)
+import sys
+from .web_scrapers.data_getter import GetAllContent 
 
 
+bp = Blueprint('data', __name__)
+
+#@bp.route('/index', methods=('GET', 'POST'))
 def initialize_data():
-    dba, fmf, gundam = get_data()
+    dba, fmf, gundam = GetAllContent()
     db = get_db()
     db.execute(
         '''
@@ -32,10 +33,10 @@ def initialize_data():
     for item in dba:
         db.execute(
             '''
-            INSERT INTO regional (title, description, date, link)
-            VALUES (?, ?, ?, ?);
+            INSERT INTO regional (event, url, direction)
+            VALUES (?, ?, ?);
             ''',
-            (item['title'], item['description'], item['date'], item['link'])
+            (item['event'], item['url'], item['direction'])
         )
     for item in fmf:
         db.execute(

@@ -1,6 +1,6 @@
-from blue_alliance import getRegionalData
-from fmf_scraper import scrape_fmf_news
-from gundam import getGundamContent
+from .blue_alliance import getRegionalData
+from .fmf_scraper import scrape_fmf_news
+from .gundam import getGundamContent
 
 
 def GetAllContent():

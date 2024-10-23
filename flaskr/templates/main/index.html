@@ -8,12 +8,12 @@
     <article class = "post"></article>
       <header>
         <div>
-          <h1>{{post['title']}}</h1>
+          <h1>{{post['event']}}</h1>
         </div>
       </header>
-      <p class = "date">{{ post ['date'] }}</p>
-      <p class = "body">{{ post['description'] }}</p>
-      <a class = "link" href = "{{ post['link']}}">Link</a>
+      <p class = "event">{{ post ['event'] }}</p>
+      <p class = "body">{{ post['url'] }}</p>
+      <a class = "link" href = "{{ post['direction']}}">Link</a>
   {% endfor %}
 {% endblock %}
 

@@ -14,7 +14,7 @@ def getGundamContent():
         result.append(val.text)
     return result
 
-print(getGundamContent())
+
 
 #page_elements = results.find_all("div", class_ = "mw-parser-output")
 
