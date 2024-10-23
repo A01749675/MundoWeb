@@ -4,14 +4,17 @@ from bs4 import BeautifulSoup
 URL = "https://gundam.fandom.com/wiki/Mobile_Suit_Gundam:_Char%27s_Counterattack"
 page = requests.get(URL)
 
-soup = BeautifulSoup(page.content, "html.parser")
-results = soup.find("p")
-print(results.prettify())
-results2 = results.find_all("i")
-print(results2)
 
-for title in results2:
-    print(title.text)
+def getGundamContent():
+    soup = BeautifulSoup(page.content, "html.parser")
+    raw = soup.find("p")
+    values = raw.find_all("i")
+    result = []
+    for val in values:
+        result.append(val.text)
+    return result
+
+print(getGundamContent())
 
 #page_elements = results.find_all("div", class_ = "mw-parser-output")
 
