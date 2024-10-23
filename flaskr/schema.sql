@@ -6,7 +6,10 @@ DROP TABLE IF EXISTS gundam;
 CREATE TABLE user (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   username TEXT UNIQUE NOT NULL,
-  password TEXT NOT NULL
+  password TEXT NOT NULL,
+  gundam BOOLEAN,
+  regional BOOLEAN,
+  fmf BOOLEAN
 );
 
 CREATE TABLE regional (

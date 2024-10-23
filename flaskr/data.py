@@ -81,6 +81,8 @@ def index():
         SELECT * FROM gundam;
         '''
     ).fetchall()
+
+
     return render_template('main/index.html', dba = dba, fmf = fmf, gundam = gundam)
 
 @bp.route('/dba', methods=('GET',))
