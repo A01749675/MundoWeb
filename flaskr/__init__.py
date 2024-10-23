@@ -1,5 +1,4 @@
 import os
-import click
 from flask import Flask
 from . import db
 from . import auth
