@@ -70,9 +70,11 @@ def index():
     ]
 
     if(g.user):
+        print("--------------")
+        print(list(g.user))
         print("User exists")
-        if(g.user['regional']):
-            
+        if(g.user['regional'] and g.user["regional"]==1):
+            print("Blue allianceaaaaaaa")
             dba = db.execute(
                 '''
                 SELECT * FROM regional;
@@ -82,8 +84,8 @@ def index():
         else:
             dba = []
             titles[0] = ""
-        if(g.user['fmf']):
-            
+        if(g.user['fmf'] and g.user["fmf"]==1):
+            print("Doctor garciaaaaaaaa")
             fmf = db.execute(
                 '''
                 SELECT * FROM fmf_news;
@@ -93,7 +95,7 @@ def index():
         else:
             fmf = []
             titles[1] = ""
-        if(g.user['gundam']):
+        if(g.user['gundam'] and g.user["gundam"]==1):
             print("GUNDAAAAAAAAAAAAAAAAAAAM")
             print(g.user['gundam']) 
             gundam = db.execute(

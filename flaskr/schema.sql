@@ -7,9 +7,9 @@ CREATE TABLE user (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   username TEXT UNIQUE NOT NULL,
   password TEXT NOT NULL,
-  gundam BOOLEAN,
-  regional BOOLEAN,
-  fmf BOOLEAN
+  gundam NUMBER NOT NULL,
+  regional NUMBER NOT NULL,
+  fmf NUMBER NOT NULL
 );
 
 CREATE TABLE regional (

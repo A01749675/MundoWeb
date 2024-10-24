@@ -13,15 +13,16 @@ bp = Blueprint('auth', __name__, url_prefix='/auth')
 def register():
     if request.method == 'POST':
         username,password,gundam,regional,fmf = None,None,None,None,None
+        
+
         try:
             username = request.form['username']
             password = request.form['password']
-            gundam = request.form['gundam']
-            regional = request.form['regional']
-            fmf = request.form['fmf']
+            gundam = request.form.get('gundam',0)
+            regional = request.form.get('regional',0)
+            fmf = request.form.get('fmf',0)
         except:
             pass
-
 
         db = get_db()
         error = None
@@ -31,19 +32,10 @@ def register():
         elif not password:
             error = 'Password is required.'
 
-        if not gundam:
-            gundam = False
-        else:
-            gundam = True
-        if not regional:
-            regional = False
-        else:
-            regional = True
-        if not fmf:
-            fmf = False
-        else:
-            fmf = True
-
+        gundam = 1 if gundam else 0
+        regional = 1 if regional else 0
+        fmf = 1 if fmf else 0
+        print(f"username: {username}, password: {password}, gundam: {gundam}, regional: {regional}, fmf: {fmf}")
         if error is None:
             try:
                 db.execute(
