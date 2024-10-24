@@ -17,7 +17,7 @@ Este proyecto forma parte de la materia **Semana Tec: Conectando el mundo web (G
 
 A continuación, un video demostrativo del funcionamiento de **MixNews**:
 
-[![MixNews en Acción](https://static1.howtogeekimages.com/wordpress/wp-content/uploads/2021/06/youtube_hero_1200x675.jpg)](https://www.youtube.com/watch?v=ID_DEL_VIDEO)
+[![MixNews en Acción](https://static1.howtogeekimages.com/wordpress/wp-content/uploads/2021/06/youtube_hero_1200x675.jpg)](https://youtu.be/aVPxWA_DxMs?si=ZEycKbRszkbSWIKf)
 
 Haz clic en la imagen para ver el video.
 
