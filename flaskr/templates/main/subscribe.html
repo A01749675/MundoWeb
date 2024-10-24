@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>Suscripción Requerida</h1>
+{% endblock %}
+
+{% block content %}
+  <p>No tienes acceso a esta categoría. ¿Te gustaría suscribirte?</p>
+  <form method="post" action="{{ url_for('data.subscribe', category=category) }}">
+    <button type="submit">Aceptar</button>
+    <a href="{{ url_for('index') }}">Cancelar</a>
+  </form>
+{% endblock %}
