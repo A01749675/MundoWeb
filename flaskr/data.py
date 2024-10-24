@@ -105,7 +105,7 @@ def index():
             
     else:
         print("No user")
-        titles= ["Regional","Sports","Anime"]
+        titles= ["Robotics","Sports","Anime"]
         dba = db.execute(
             '''
             SELECT * FROM regional;
