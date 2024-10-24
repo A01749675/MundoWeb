@@ -13,6 +13,14 @@ Este proyecto forma parte de la materia **Semana Tec: Conectando el mundo web (G
 - Despliegue en una Raspberry Pi como servidor.
 - Actualización de noticias en tiempo real.
 
+## Video de Funcionamiento
+
+A continuación, un video demostrativo del funcionamiento de **MixNews**:
+
+[![MixNews en Acción](https://static1.howtogeekimages.com/wordpress/wp-content/uploads/2021/06/youtube_hero_1200x675.jpg)](https://www.youtube.com/watch?v=ID_DEL_VIDEO)
+
+Haz clic en la imagen para ver el video.
+
 ## Uso
 
 Una vez que el servidor está corriendo, accede a la página web desde cualquier navegador utilizando la dirección IP de la Raspberry Pi.
