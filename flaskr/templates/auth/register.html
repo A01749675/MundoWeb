@@ -5,21 +5,23 @@
 {% endblock %}
 
 {% block content %}
-  <form method="post">
-    <label for="username">Username</label>
-    <input name="username" id="username" required>
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" required>
+  <div class="white-background">
+    <form method="post">
+      <label for="username">Username</label>
+      <input name="username" id="username" required>
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" required>
 
-    <span><label for="gundam">Gundam</label>
-      <input type="checkbox" name="gundam" id="gundam" checked></span>
-      
-      <span><label for="regional">Robotics</label>
-      <input type="checkbox" name="regional" id="regional" checked></span>
-      
-      <span><label for="fmf">Sports</label>
-      <input type="checkbox" name="fmf" id="fmf" checked></span>
-      
-    <input type="submit" value="Register">
-  </form>
+      <span><label for="gundam">Gundam</label>
+        <input type="checkbox" name="gundam" id="gundam" checked></span>
+        
+        <span><label for="regional">Robotics</label>
+        <input type="checkbox" name="regional" id="regional" checked></span>
+        
+        <span><label for="fmf">Sports</label>
+        <input type="checkbox" name="fmf" id="fmf" checked></span>
+        
+      <input type="submit" value="Register">
+    </form>
+  </div>
 {% endblock %}

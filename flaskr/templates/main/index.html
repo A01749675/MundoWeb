@@ -1,48 +1,75 @@
 {% extends 'base.html' %}
 
 {% block header %}
-<h1> {% block title %}Página Principal{% endblock %}</h1>
-<a href="dba">DBA</a> <p>/</p> 
-<a href="fmf">FMF</a><p>/</p>
-<a href="gundam">Gundam</a>
+<h1> {% block title %}Home{% endblock %}</h1>
+<a href="{{ url_for('data.dba') }}" class="button">DBA</a>
+<a href="{{ url_for('data.fmf') }}" class="button">FMF</a>
+<a href="{{ url_for('data.gundam') }}" class="button">Gundam</a>
 {% endblock %}
 
-
 {% block content %}
-  <h3>{{titles[0]}}</h3>
-  {% for post in dba %}
-    <article class="post">
-      <header>
-        <div>
-          <h1>{{ post['event'] }}</h1>
+  {% if dba %}
+    <div class="category-container">
+      <h3>Robotics</h3>
+      {% for post in dba %}
+        {% if post['url'] %}
+          <a href="{{ post['url'] }}" class="card dba-card">
+        {% else %}
+          <div class="card dba-card">
+        {% endif %}
+          <header>
+            <div>
+              <h1>{{ post['event'] }}</h1>
+            </div>
+          </header>
+          <p class="event">{{ post['event'] }}</p>
+          <p class="body">{{ post['direction'] }}</p>
+        {% if post['url'] %}
+          </a>
+        {% else %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {% if fmf %}
+    <div class="category-container">
+      <h3>Sports</h3>
+      {% for post in fmf %}
+        {% if post['link'] %}
+          <a href="{{ post['link'] }}" class="card fmf-card">
+        {% else %}
+          <div class="card fmf-card">
+        {% endif %}
+          <header>
+            <div>
+              <h1>{{ post['title'] }}</h1>
+            </div>
+          </header>
+          <p class="date">{{ post['date'] }}</p>
+          <p class="body">{{ post['description'] }}</p>
+        {% if post['link'] %}
+          </a>
+        {% else %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {% if gundam %}
+    <div class="category-container">
+      <h3>Gundam</h3>
+      {% for post in gundam %}
+        <div class="card gundam-card">
+          <header>
+            <div>
+              <h1>{{ post['title'] }}</h1>
+            </div>
+          </header>
         </div>
-      </header>
-      <p class="event">{{ post['event'] }}</p>
-      <p class="body">{{ post['direction'] }}</p>
-      <a class="link" href="{{ post['url'] }}">Link</a>
-    </article>
-  {% endfor %}
-  <h3>{{titles[1]}}</h3>
-  {% for post in fmf %}
-    <article class="post">
-      <header>
-        <div>
-          <h1>{{ post['title'] }}</h1>
-        </div>
-      </header>
-      <p class="date">{{ post['date'] }}</p>
-      <p class="body">{{ post['description'] }}</p>
-      <a class="link" href="{{ post['link'] }}">Link</a>
-    </article>
-  {% endfor %}
-  <h3>{{titles[2]}}</h3>
-  {% for post in gundam %}
-    <article class="post">
-      <header>
-        <div>
-          <h1>{{ post['title'] }}</h1>
-        </div>
-      </header>
-    </article>
-  {% endfor %}
+      {% endfor %}
+    </div>
+  {% endif %}
 {% endblock %}

@@ -121,7 +121,6 @@ def subscribe(category):
    )
    db.commit()
   
-   # Recargar el usuario actualizado en g.user
    g.user = db.execute(
        'SELECT * FROM user WHERE id = ?', (g.user['id'],)
    ).fetchone()

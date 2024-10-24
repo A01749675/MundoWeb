@@ -1,18 +1,22 @@
 {% extends 'base.html' %}
 
 {% block header %}
-<h1> {% block title %}Página Principal{% endblock %}</h1>
+  <h1>Gundam</h1>
+  <form action="{{ url_for('index') }}" method="get" style="display:inline;">
+    <button type="submit" class="btn btn-primary">Regresar</button>
+  </form>
 {% endblock %}
 
 {% block content %}
-
-<h3>Anime</h3>
-{% for post in posts %}
-    <article class = "post"></article>
-      <header>
-        <div>
-          <h1>{{post['title']}}</h1>
-        </div>
-      </header>
-  {% endfor %}
+  <div class="category-container">
+    {% for post in posts %}
+      <div class="card gundam-card">
+        <header>
+          <div>
+            <h1>{{ post['title'] }}</h1>
+          </div>
+        </header>
+      </div>
+    {% endfor %}
+  </div>
 {% endblock %}
