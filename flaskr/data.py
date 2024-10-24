@@ -76,7 +76,7 @@ def index():
                 SELECT * FROM regional;
                 '''
             )
-            titles[0] = "Regional"
+            titles[0] = "Robotics"
         else:
             dba = []
             titles[0] = ""
